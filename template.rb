@@ -94,10 +94,6 @@ def stop_spring
   run "spring stop"
 end
 
-def add_sitemap
-  rails_command "sitemap:install"
-end
-
 # Main setup
 add_template_repository_to_source_path
 
@@ -108,20 +104,10 @@ after_bundle do
   stop_spring
   add_users
   add_javascript
-  add_announcements
-  add_notifications
-  add_multiple_authentication
-  add_sidekiq
-  add_friendly_id
-
   copy_templates
-  add_whenever
-  add_sitemap
-
-  # rails_command "active_storage:install"
 
   say
-  say "Jumpstart app successfully created!", :blue
+  say "Rails Article app successfully created!", :blue
   say
   say "To get started with your new app:", :green
   say "  cd #{app_name}"
@@ -129,7 +115,6 @@ after_bundle do
   say "  # Update config/database.yml with your database credentials"
   say
   say "  rails db:create && rails db:migrate"
-  say "  rails g administrate:install # Generate admin dashboards"
   say "  gem install foreman"
   say "  foreman start # Run Rails, sidekiq, and webpack-dev-server"
 end
